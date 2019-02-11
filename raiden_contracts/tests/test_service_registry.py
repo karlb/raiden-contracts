@@ -45,6 +45,8 @@ def test_setURL(
     assert service_registry.functions.urls(A).call() == url2
     assert service_registry.functions.service_addresses(0).call() == A
     assert service_registry.functions.serviceCount().call() == 1
+    with pytest.raises(TransactionFailed):
+        assert service_registry.functions.service_addresses(1).call()
 
 
 def test_version(service_registry):
