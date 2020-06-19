@@ -167,6 +167,12 @@ def contracts_source_path_with_stem(stem: Path) -> Dict[str, Path]:
 
 
 def _fix_contract_key_names(d: Dict) -> Dict:
+    """ Remove path from keys
+
+    The keys are path+class pairs separated by a colon, like
+    ``data/source/lib/ECVerify.sol:ECVerify``. Return a dictionary where the
+    paths are removed from the keys
+    """
     result = {}
 
     for k, v in d.items():
