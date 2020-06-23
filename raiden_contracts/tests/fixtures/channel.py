@@ -679,7 +679,7 @@ def create_balance_proof(token_network: Contract, get_private_key: Callable) -> 
         signature = sign_balance_proof(
             private_key,
             _token_network.address,
-            _token_network.functions.chain_id().call(),
+            _token_network.functions.getChainID().call(),
             channel_identifier,
             MessageTypeId.BALANCE_PROOF,
             balance_hash,
@@ -720,7 +720,7 @@ def create_balance_proof_countersignature(
         non_closing_signature = sign_balance_proof_message(
             private_key,
             _token_network.address,
-            _token_network.functions.chain_id().call(),
+            _token_network.functions.getChainID().call(),
             channel_identifier,
             msg_type,
             balance_hash,
@@ -750,7 +750,7 @@ def create_close_signature_for_no_balance_proof(
         non_closing_signature = sign_balance_proof_message(
             private_key,
             _token_network.address,
-            _token_network.functions.chain_id().call(),
+            _token_network.functions.getChainID().call(),
             channel_identifier,
             MessageTypeId.BALANCE_PROOF,
             EMPTY_BALANCE_HASH,
@@ -819,7 +819,7 @@ def create_withdraw_signatures(token_network: Contract, get_private_key: Callabl
             signature = sign_withdraw_message(
                 private_key,
                 token_network_address,
-                token_network.functions.chain_id().call(),
+                token_network.functions.getChainID().call(),
                 channel_identifier,
                 participant_who_withdraws,
                 amount_to_withdraw,
